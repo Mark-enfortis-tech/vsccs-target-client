@@ -17,12 +17,12 @@ Need to send a response back to the vsccs server indicating command received.
 // msgServer object - handles incoming commands
 const targetClient = net.createServer((socket) => {
   // 'connection' listener.
-  console.log('msg client connected');
+  console.log('command handler connected');
   // myTimer.start();
 
 
   socket.on('end', () => {
-    console.log('cmd handler disconnected');
+    console.log('command handler disconnected');
   });
 
   // receive command from UI
