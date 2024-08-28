@@ -35,8 +35,8 @@ const targetClient = net.createServer((socket) => {
     // wait 1 second and send response to ack handler
     
     const respData = {
-      "cmd_id": commandMap.get("cmd_id"),
-      "time_sent" : commandMap.get("time_sent")
+      "cmd_id": cmdMap.get("cmd_id"),
+      "time_sent" : cmdMap.get("time_sent")
     };
 
     sendData(respData);
@@ -56,18 +56,18 @@ targetClient.listen(3004, () => {
 function sendData(respData){
   console.log("running sendData:", respData);
 
-  const internalClient = new net.Socket();
+  const client = new net.Socket();
 
   const remPort = 3006;
   const host = 'localhost';
 
   // connect to command handler and send command, then close the socket
-  internalClient.connect(remPort, host, () => {
+  client.connect(remPort, host, () => {
     console.log('connected to command handler');
     const respDataStr = JSON.stringify(respData);
     console.log('sending response: ', respDataStr)
-    internalClient.write(respDataStr);
-    internalClient.end();
+    client.write(respDataStr);
+    client.end();
   });
 }
 
