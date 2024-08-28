@@ -1,0 +1,7 @@
+node_modules/*.*
+*.csv
+*.ods
+*.txt
+*.xlxs
+node_modules\*.*
+node_modules
