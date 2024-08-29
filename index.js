@@ -34,10 +34,19 @@ const targetClient = net.createServer((socket) => {
 
     // wait 1 second and send response to ack handler
     
-    const respData = {
+    const cmdData = {
       "cmd_id": cmdMap.get("cmd_id"),
-      "time_sent" : cmdMap.get("time_sent")
+      "cmd_string" : cmdMap.get("cmd_string"),
+      "bcast_id": cmdMap.get("bcast_id")
     };
+
+    console.log('cmdData: ', cmdData);
+
+    const respData = {
+      "bcast_id": cmdData.bcast_id
+    };
+
+ 
 
     sendData(respData);
 
